@@ -19,10 +19,13 @@ func Ping(w http.ResponseWriter, r *http.Request) {
 		StatusCode: http.StatusOK,
 	}
 
-	log.Printf("StatusCode: %d, Success", resp.StatusCode)
-	httputils.WriteResponse(w, &resp, map[string]string{
+	if b, err := httputils.WriteResponse(w, &resp, map[string]string{
 		"Content-Type": "application/json",
-	})
+	}); err != nil {
+		log.Printf("failed write response: %s", err.Error())
+	} else {
+		log.Printf("successfully writed %d bytes", b)
+	}
 }
 
 func PingV2(w http.ResponseWriter, r *http.Request) {
@@ -37,8 +40,11 @@ func PingV2(w http.ResponseWriter, r *http.Request) {
 		StatusCode: http.StatusOK,
 	}
 
-	log.Printf("StatusCode: %d, Success", resp.StatusCode)
-	httputils.WriteResponse(w, &resp, map[string]string{
+	if b, err := httputils.WriteResponse(w, &resp, map[string]string{
 		"Content-Type": "application/json",
-	})
+	}); err != nil {
+		log.Printf("failed write response: %s", err.Error())
+	} else {
+		log.Printf("successfully writed %d bytes", b)
+	}
 }
