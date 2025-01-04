@@ -1,0 +1,15 @@
+name: test app
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install deps
+        run: go mod tidy; go mod download
+      - name: Test
+        run: make test
