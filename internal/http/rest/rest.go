@@ -14,7 +14,7 @@ func Ping(w http.ResponseWriter, r *http.Request) {
 
 	resp := models.Response{
 		Data: map[string]interface{}{
-			"ping": "pong xd",
+			"ping": "pong xdrweqreqwrqwe",
 		},
 		StatusCode: http.StatusOK,
 	}
