@@ -14,7 +14,7 @@ func Ping(w http.ResponseWriter, r *http.Request) {
 
 	resp := models.Response{
 		Data: map[string]interface{}{
-			"ping": "pong xd this is a dev branch",
+			"ping": "pong xdrweqreqwrqwe",
 		},
 		StatusCode: http.StatusOK,
 	}
