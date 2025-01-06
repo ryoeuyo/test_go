@@ -14,7 +14,10 @@ jobs:
         with:
           go-version: '1.23.4'
       - name: Install deps
-        run: go mod tidy; go mod download
+        run: |
+          export GOPROXY=direct
+          go mod tidy
+          go mod download
       - name: Install linter
         run: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.63.4
       - name: Lint
@@ -31,6 +34,9 @@ jobs:
         with:
           go-version: '1.23.4'
       - name: Install deps
-        run: go mod tidy; go mod download
+        run: |
+          export GOPROXY=direct
+          go mod tidy
+          go mod download
       - name: Test
         run: make test
