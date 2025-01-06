@@ -14,14 +14,18 @@ jobs:
         with:
           go-version: '1.23.4'
       - name: Install deps
-        run: go mod tidy; go mod download
+        run: |
+          go mod tidy
+          go mod download
       - name: Install linter
-        run: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.63.4
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.63.4
+          export PATH="$HOME/go/bin:$PATH"
       - name: Lint
-        run: /home/ryo/go/bin/golangci-lint run ./...
+        run: golangci-lint run ./...
 
   test:
-    needs: [ lint ]
+    needs: lint
     runs-on: self-hosted
     steps:
       - name: Checkout
@@ -31,6 +35,8 @@ jobs:
         with:
           go-version: '1.23.4'
       - name: Install deps
-        run: go mod tidy; go mod download
+        run: |
+          go mod tidy
+          go mod download
       - name: Test
         run: make test

@@ -10,7 +10,7 @@ import (
 	"syscall"
 )
 
-// This is a test application
+// This is a test application:)
 func main() {
 	app := app.NewApp()
 
