@@ -74,6 +74,6 @@ jobs:
         key: ${{ secrets.SSH_PRIVATEKEY }}
         script: /usr/bin/deploy_app.sh
         envs:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-          DOCKERHUB_REPO_NAME: ${{ secrets.DOCKERHUB_REPO_NAME }}
+          - DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          - DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          - DOCKERHUB_REPO_NAME: ${{ secrets.DOCKERHUB_REPO_NAME }}
