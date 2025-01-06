@@ -69,11 +69,11 @@ jobs:
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@v1.2.0
       with:
-        envs:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-          DOCKERHUB_REPO_NAME: ${{ secrets.DOCKERHUB_REPO_NAME }}
         host: ${{ secrets.DEPLOYMENT_SERVER_IP }}
         username: ${{ secrets.DEPLOYMENT_SERVER_USERNAME }}
         key: ${{ secrets.SSH_PRIVATEKEY }}
         script: /usr/bin/deploy_app.sh
+        envs:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          DOCKERHUB_REPO_NAME: ${{ secrets.DOCKERHUB_REPO_NAME }}
