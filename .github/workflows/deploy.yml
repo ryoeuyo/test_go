@@ -16,14 +16,18 @@ jobs:
         with:
           go-version: '1.23.4'
       - name: Install deps
-        run: go mod tidy; go mod download
+        run: |
+          go mod tidy
+          go mod download
       - name: Install linter
-        run: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.63.4
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.63.4
+          export PATH="$HOME/go/bin:$PATH"
       - name: Lint
-        run: /home/ryo/go/bin/golangci-lint run ./...
+        run: golangci-lint run ./...
 
   test:
-    needs: [ lint ]
+    needs: lint
     runs-on: self-hosted
     steps:
       - name: Checkout
@@ -33,17 +37,11 @@ jobs:
         with:
           go-version: '1.23.4'
       - name: Install deps
-        run: go mod tidy; go mod download
+        run: |
+          go mod tidy
+          go mod download
       - name: Test
         run: make test
-
-  # 1. Login to docker
-  # 2. Build image
-  # 3. Push image to docker hub
-  # 4. Stop current running container in deployment Server
-  # 5. Delete this container
-  # 6. Pull new image from docker hub
-  # 7. Run new container
 
   docker-build:
     needs: [ lint, test]
