@@ -65,8 +65,6 @@ jobs:
   deploy:
     needs: docker-build
     runs-on: self-hosted
-    env:
-
     steps:
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@v1.2.0
