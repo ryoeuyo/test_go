@@ -35,6 +35,13 @@ jobs:
       - name: Test
         run: make test
 
+  # 1. Login to docker
+  # 2. Build image
+  # 3. Push image to docker hub
+  # 4. Stop current running container in deployment Server
+  # 5. Delete this container
+  # 6. Pull new image from docker hub
+  # 7. Run new container
   deploy:
     needs: [ test, lint ]
     runs-on: self-hosted
