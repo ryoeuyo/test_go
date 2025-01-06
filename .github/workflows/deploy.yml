@@ -2,6 +2,8 @@ name: test app
 on:
   push:
     branches: [ "dev" ]
+  pull:
+    branches: [ "dev" ]
 
 jobs:
   lint:
