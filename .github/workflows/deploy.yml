@@ -4,7 +4,8 @@ on:
     branches: [ "dev" ]
   pull_request:
     branches: [ "dev" ]
-jobs: lint:
+jobs:
+  lint:
     runs-on: self-hosted
     steps:
       - name: Checkout
@@ -25,7 +26,6 @@ jobs: lint:
         run: golangci-lint run ./...
 
   test:
-    needs: lint
     runs-on: self-hosted
     steps:
       - name: Checkout
