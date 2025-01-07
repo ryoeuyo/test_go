@@ -37,7 +37,7 @@ func New(opts *ServerOptions, endpoints ...models.EndPoint) *Server {
 	}
 }
 
-func (s *Server) MustStartServer(endpoints ...models.EndPoint) {
+func (s *Server) MustStartServer() {
 	if err := s.srv.ListenAndServe(); err != nil {
 		log.Fatalf("couldn't start the server: %s", err.Error())
 	}

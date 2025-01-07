@@ -12,14 +12,13 @@ import (
 
 // This is a test application:)
 func main() {
-	app := app.NewApp()
-
 	endpoints := []models.EndPoint{
 		models.NewEndPoint("/ping", rest.Ping),
 		models.NewEndPoint("/pingv2", rest.PingV2),
 	}
 
-	go app.Srv.MustStartServer(endpoints...)
+	app := app.NewApp(endpoints...)
+	go app.Srv.MustStartServer()
 
 	log.Printf("Server started")
 

@@ -8,10 +8,6 @@ import (
 )
 
 func Ping(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		return
-	}
-
 	resp := models.Response{
 		Data: map[string]interface{}{
 			"ping": "pong xdrweqreqwrqwe",
@@ -29,10 +25,6 @@ func Ping(w http.ResponseWriter, r *http.Request) {
 }
 
 func PingV2(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		return
-	}
-
 	resp := models.Response{
 		Data: map[string]interface{}{
 			"ping": "pong pong ping pong pong xd xd",
