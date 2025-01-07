@@ -4,9 +4,7 @@ on:
     branches: [ "dev" ]
   pull_request:
     branches: [ "dev" ]
-
-jobs:
-  lint:
+jobs: lint:
     runs-on: self-hosted
     steps:
       - name: Checkout
@@ -76,4 +74,6 @@ jobs:
         host: ${{ secrets.DEPLOYMENT_SERVER_IP }}
         username: ${{ secrets.DEPLOYMENT_SERVER_USERNAME }}
         key: ${{ secrets.SSH_PRIVATEKEY }}
+        envs: DOCKERHUB_USERNAME,DOCKERHUB_PASSWORD,DOCKERHUB_REPO_NAME
         script: /usr/bin/deploy_app.sh
+
