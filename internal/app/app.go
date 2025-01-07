@@ -13,7 +13,6 @@ type App struct {
 func NewApp(endpoints ...models.EndPoint) *App {
 	srv := server.New(&server.ServerOptions{
 		Timeout: 5 * time.Second,
-		Host:    "localhost",
 		Port:    8081,
 	}, endpoints...)
 

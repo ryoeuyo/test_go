@@ -2,11 +2,10 @@ package server
 
 import (
 	"context"
+	"fmt"
 	"log"
-	"net"
 	"net/http"
 	"ryoeuyo/testgo/internal/domain/models"
-	"strconv"
 	"time"
 )
 
@@ -16,7 +15,6 @@ type Server struct {
 
 type ServerOptions struct {
 	Timeout time.Duration
-	Host    string
 	Port    int
 }
 
@@ -32,7 +30,7 @@ func New(opts *ServerOptions, endpoints ...models.EndPoint) *Server {
 			Handler:      mux,
 			ReadTimeout:  opts.Timeout,
 			WriteTimeout: opts.Timeout,
-			Addr:         net.JoinHostPort(opts.Host, strconv.Itoa(opts.Port)),
+			Addr:         fmt.Sprintf(":%d", opts.Port),
 		},
 	}
 }
